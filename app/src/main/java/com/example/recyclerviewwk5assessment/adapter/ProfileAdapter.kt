@@ -2,15 +2,17 @@ package com.example.recyclerviewwk5assessment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.recyclerviewwk5assessment.adapter.ProfileAdapter.*
 import com.example.recyclerviewwk5assessment.databinding.ProfileItemBinding
 import com.example.recyclerviewwk5assessment.models.Profile
 
-class ProfileAdapter(val allProfile: List<Profile>) :
-    RecyclerView.Adapter<ProfileAdapter.ProfileViewHolder>() {
+class ProfileAdapter(val allProfile: List<Profile>, var clickListener: OnItemClickListener) :
+    RecyclerView.Adapter<ProfileViewHolder>() {
     class ProfileViewHolder(var binding: ProfileItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(profile: Profile) {
+        fun bind(profile: Profile, action : OnItemClickListener) {
             binding.profileImages.setImageResource(profile.profileImage)
             binding.firstName.text = profile.firstName
             binding.lastName.text = profile.lastName
@@ -26,10 +28,16 @@ class ProfileAdapter(val allProfile: List<Profile>) :
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
         val profile = allProfile[position]
         holder.bind(profile)
+        holder.bind(allProfile.get(position), clickListner)
     }
 
     override fun getItemCount(): Int {
         return allProfile.size
     }
 
+}
+
+
+interface OnItemClickListener{
+    fun onItemClick(profile: Profile, position: Int)
 }

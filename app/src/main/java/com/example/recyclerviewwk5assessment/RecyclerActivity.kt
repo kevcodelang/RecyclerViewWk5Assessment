@@ -3,14 +3,12 @@ package com.example.recyclerviewwk5assessment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
+import com.example.recyclerviewwk5assessment.adapter.OnItemClickListener
 import com.example.recyclerviewwk5assessment.adapter.ProfileAdapter
-import com.example.recyclerviewwk5assessment.databinding.ActivityMainBinding
 import com.example.recyclerviewwk5assessment.databinding.ActivityRecyclerBinding
 import com.example.recyclerviewwk5assessment.models.Profile
 
-class RecyclerActivity : AppCompatActivity() {
+class RecyclerActivity : AppCompatActivity(), OnItemClickListener {
     private lateinit var binding: ActivityRecyclerBinding
     private lateinit var myProfileAdapter: ProfileAdapter
 
@@ -20,34 +18,34 @@ class RecyclerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        val allProfile: List<Profile> = listOf(
+        val allProfile: List<Profile> = mutableListOf(
             Profile(
-                R.drawable.ic_1,
+                R.drawable.aphoto,
                 "Kelvin",
                 "kotlin",
             ),
             Profile(
-                R.drawable.ic_5,
+                R.drawable.bphoto,
                 "Liam",
                 "Noah",
             ),
             Profile(
-                R.drawable.ic_6,
+                R.drawable.bvphoto,
                 "Oliver",
                 "Elijah",
             ),
             Profile(
-                R.drawable.ic_1,
+                R.drawable.dephoto,
                 "Emma",
                 "Joseph",
             ),
             Profile(
-                R.drawable.ic_5,
+                R.drawable.dphoto,
                 "John",
                 "Olivia",
             ),
             Profile(
-                R.drawable.ic_6,
+                R.drawable.ephoto,
                 "Peace",
                 "Olivia",
             ),
@@ -122,10 +120,18 @@ class RecyclerActivity : AppCompatActivity() {
                 "Brown",
             )
         )
-        myProfileAdapter = ProfileAdapter(allProfile)
+        myProfileAdapter = ProfileAdapter(allProfile,clickListener = this)
         binding.profileRecyclerView.adapter = myProfileAdapter
 
+    }
 
+    override fun onItemClick(profile: Profile, position: Int) {
+        var intent = Intent(this, ViewProfileActivity::class.java)
+        intent.putExtra("imageView", profile.profileImage.toString())
+        intent.putExtra("firstName", profile.firstName)
+        intent.putExtra("lastName", profile.lastName)
+        startActivity(intent)
 
     }
+
 }
