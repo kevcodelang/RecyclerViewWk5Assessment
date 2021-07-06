@@ -12,7 +12,7 @@ class ProfileAdapter(val allProfile: List<Profile>, var clickListener: OnItemCli
     RecyclerView.Adapter<ProfileViewHolder>() {
     class ProfileViewHolder(var binding: ProfileItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(profile: Profile, action : OnItemClickListener) {
+        fun initialize(profile: Profile, action : OnItemClickListener) {
             binding.profileImages.setImageResource(profile.profileImage)
             binding.firstName.text = profile.firstName
             binding.lastName.text = profile.lastName
@@ -28,7 +28,7 @@ class ProfileAdapter(val allProfile: List<Profile>, var clickListener: OnItemCli
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
         val profile = allProfile[position]
         holder.bind(profile)
-        holder.bind(allProfile.get(position), clickListener)
+        holder.initialize(allProfile.get(position), clickListener)
     }
 
     override fun getItemCount(): Int {
