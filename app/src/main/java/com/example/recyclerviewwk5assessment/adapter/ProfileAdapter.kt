@@ -12,11 +12,23 @@ class ProfileAdapter(val allProfile: List<Profile>, var clickListener: OnItemCli
     RecyclerView.Adapter<ProfileViewHolder>() {
     class ProfileViewHolder(var binding: ProfileItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun initialize(profile: Profile, action : OnItemClickListener) {
+        fun initialize(profile: Profile, action: OnItemClickListener) {
             binding.profileImages.setImageResource(profile.profileImage)
             binding.firstName.text = profile.firstName
             binding.lastName.text = profile.lastName
 
+            itemView.setOnClickListener {
+                action.onItemClick(profile, adapterPosition)
+            }
+        }
+
+        fun bind(profile: Profile) {
+            binding.apply {
+                firstName.text = profile.firstName
+                lastName.text = profile.lastName
+                profileImages.setImageResource(profile.profileImage)
+
+            }
         }
     }
 
@@ -38,6 +50,6 @@ class ProfileAdapter(val allProfile: List<Profile>, var clickListener: OnItemCli
 }
 
 
-interface OnItemClickListener{
+interface OnItemClickListener {
     fun onItemClick(profile: Profile, position: Int)
 }
