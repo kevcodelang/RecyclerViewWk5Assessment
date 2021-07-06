@@ -28,7 +28,7 @@ class ProfileAdapter(val allProfile: List<Profile>, var clickListener: OnItemCli
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
         val profile = allProfile[position]
         holder.bind(profile)
-        holder.bind(allProfile.get(position), clickListner)
+        holder.bind(allProfile.get(position), clickListener)
     }
 
     override fun getItemCount(): Int {
