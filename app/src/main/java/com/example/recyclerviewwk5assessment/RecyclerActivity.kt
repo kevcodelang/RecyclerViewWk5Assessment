@@ -22,7 +22,7 @@ class RecyclerActivity : AppCompatActivity(), OnItemClickListener {
             Profile(
                 R.drawable.aphoto,
                 "Kelvin",
-                "kotlin",
+                "Badoni",
             ),
             Profile(
                 R.drawable.bphoto,
