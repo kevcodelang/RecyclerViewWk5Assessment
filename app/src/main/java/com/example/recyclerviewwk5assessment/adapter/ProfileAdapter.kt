@@ -14,6 +14,7 @@ class ProfileAdapter(val allProfile: List<Profile>) :
             binding.profileImages.setImageResource(profile.profileImage)
             binding.firstName.text = profile.firstName
             binding.lastName.text = profile.lastName
+
         }
     }
 

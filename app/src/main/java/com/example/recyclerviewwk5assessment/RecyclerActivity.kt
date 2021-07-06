@@ -1,7 +1,10 @@
 package com.example.recyclerviewwk5assessment
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import com.example.recyclerviewwk5assessment.adapter.ProfileAdapter
 import com.example.recyclerviewwk5assessment.databinding.ActivityMainBinding
 import com.example.recyclerviewwk5assessment.databinding.ActivityRecyclerBinding
@@ -15,6 +18,7 @@ class RecyclerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecyclerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         val allProfile: List<Profile> = listOf(
             Profile(
@@ -120,5 +124,8 @@ class RecyclerActivity : AppCompatActivity() {
         )
         myProfileAdapter = ProfileAdapter(allProfile)
         binding.profileRecyclerView.adapter = myProfileAdapter
+
+
+
     }
 }

@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerViewWk5Assessment">
-        <activity android:name=".ViewActivity"></activity>
         <activity android:name=".ViewProfileActivity" />
         <activity android:name=".RecyclerActivity">
             <intent-filter>
